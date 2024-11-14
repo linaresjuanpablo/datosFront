@@ -1,0 +1,33 @@
+<h4>Proponente {{ proponentsService.title }}</h4>
+
+<h6 *ngIf="proponentsService.getData().length" class="text-secondary">
+  {{ getInfo }}
+</h6>
+
+<hr />
+
+<table *ngIf="proponentsService.getData().length" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Procedimiento</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Nit</th>
+      <th scope="col">Código Entidad</th>
+      <th scope="col">Entidad Compradora</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of proponentsService.getData()">
+      <td>{{ item.id_procedimiento }}</td>
+      <td>{{ item.nombre_procedimiento }}</td>
+      <td>{{ item.fecha_publicacion }}</td>
+      <td>{{ item.nit_entidad }}</td>
+      <td>{{ item.codigo_entidad }}</td>
+      <td>{{ item.entidad_compradora }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!proponentsService.getData().length">No se encontraron datos</div>

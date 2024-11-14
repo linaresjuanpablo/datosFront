@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BillsService } from 'src/app/services/bills/service';
+import { ProponentsService } from 'src/app/services/proponents/service';
 import { SuppliersService } from 'src/app/services/suppliers/service';
 
 @Component({
@@ -14,6 +15,8 @@ export class MenuComponent implements OnInit {
   private readonly suppliersService: SuppliersService =
     inject(SuppliersService);
   private readonly billsService: BillsService = inject(BillsService);
+  private readonly proponentsService: ProponentsService =
+    inject(ProponentsService);
   private readonly router: Router = inject(Router);
 
   showLoader = false;
@@ -56,6 +59,7 @@ export class MenuComponent implements OnInit {
       day: [''],
       month: [''],
       year: [''],
+      proponentsNit: [''],
     });
   }
 
@@ -107,6 +111,23 @@ export class MenuComponent implements OnInit {
         this.billsService.clearData();
         this.billsService.title = date;
         this.handleResponse('/bills');
+      },
+    });
+  }
+
+  sendProponent(): void {
+    this.showLoader = true;
+    const nit = this.form.value.proponentsNit;
+
+    this.proponentsService.get(nit).subscribe({
+      next: () => {
+        this.proponentsService.title = nit;
+        this.handleResponse('/proponent');
+      },
+      error: () => {
+        this.proponentsService.clearData();
+        this.proponentsService.title = nit;
+        this.handleResponse('/proponent');
       },
     });
   }

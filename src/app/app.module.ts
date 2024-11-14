@@ -14,6 +14,7 @@ import { BillsComponent } from './components/bills/bills.component';
 
 import { registerLocaleData } from '@angular/common';
 import localeEsCO from '@angular/common/locales/es-CO';
+import { ProponentComponent } from './components/proponent/proponent.component';
 
 registerLocaleData(localeEsCO);
 
@@ -25,6 +26,7 @@ registerLocaleData(localeEsCO);
     SuppliersComponent,
     SuppliersNitComponent,
     BillsComponent,
+    ProponentComponent,
   ],
   imports: [
     BrowserModule,

@@ -79,13 +79,20 @@
       >
         <div class="accordion-body">
           <div class="input-group input-group-sm mb-3">
-            <input type="text" class="form-control" placeholder="Digite Nit" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Digite Nit"
+              formControlName="proponentsNit"
+            />
             <span
               class="input-group-text bg-info"
               id="inputGroup-sizing-sm"
               style="cursor: pointer"
-              >Buscar</span
-            >
+              (click)="sendProponent()"
+              (keypress)="sendProponent()"
+              >Buscar
+            </span>
           </div>
         </div>
       </div>
