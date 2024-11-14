@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -9,8 +9,13 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SuppliersComponent } from './components/suppliers/suppliers.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SuppliersService } from './services/suppliers/service';
 import { SuppliersNitComponent } from './suppliers-nit/suppliers-nit.component';
+import { BillsComponent } from './components/bills/bills.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeEsCO from '@angular/common/locales/es-CO';
+
+registerLocaleData(localeEsCO);
 
 @NgModule({
   declarations: [
@@ -19,6 +24,7 @@ import { SuppliersNitComponent } from './suppliers-nit/suppliers-nit.component';
     MenuComponent,
     SuppliersComponent,
     SuppliersNitComponent,
+    BillsComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,7 @@ import { SuppliersNitComponent } from './suppliers-nit/suppliers-nit.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [SuppliersService],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-CO' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

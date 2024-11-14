@@ -44,7 +44,7 @@ export class SuppliersService {
       .get<SuppliersNit>(`${this.apiURL}/api/data/proveedor/nit/${value}`)
       .pipe(
         map((response) => {
-          this.nitData = response.nitResponseDtos;
+          this.nitData = response.nitResponseDtos ?? [];
 
           return this.nitData;
         })

@@ -1,0 +1,36 @@
+<h4>Facturas {{ billsService.title }}</h4>
+
+<hr />
+
+<table *ngIf="billsService.getData().length" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Contrato</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Número Factura</th>
+      <th scope="col">Usuario Pago</th>
+      <th scope="col">Valor a Pagar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of billsService.getData()">
+      <td>{{ item.id_contrato }}</td>
+      <td>{{ item.estado }}</td>
+      <td>{{ item.numero_de_factura }}</td>
+      <td>{{ item.usuario_pago }}</td>
+      <td>{{ item.valor_a_pagar | currency : "COP" : "symbol" : "1.0-2" }}</td>
+    </tr>
+  </tbody>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col">TOTAL VENTA</th>
+    <th scope="col">
+      {{ billsService.getSales() | currency : "COP" : "symbol" : "1.0-2" }}
+    </th>
+  </tr>
+</table>
+
+<div *ngIf="!billsService.getData().length">No se encontraron datos</div>

@@ -58,6 +58,7 @@
         </div>
       </div>
     </div>
+
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button
@@ -89,6 +90,7 @@
         </div>
       </div>
     </div>
+
     <div class="accordion-item mb-5">
       <h2 class="accordion-header">
         <button
@@ -109,18 +111,39 @@
       >
         <div class="accordion-body text-end">
           <div class="input-group input-group-sm mb-3">
-            <input type="text" class="form-control" placeholder="Digite Año" />
+            <input
+              type="text"
+              formControlName="year"
+              class="form-control"
+              placeholder="Digite Año"
+            />
           </div>
 
           <div class="input-group input-group-sm mb-3">
-            <input type="text" class="form-control" placeholder="Digite Mes" />
+            <input
+              type="text"
+              formControlName="month"
+              class="form-control"
+              placeholder="Digite Mes"
+            />
           </div>
 
           <div class="input-group input-group-sm mb-3">
-            <input type="text" class="form-control" placeholder="Digite Día" />
+            <input
+              type="text"
+              formControlName="day"
+              class="form-control"
+              placeholder="Digite Día"
+            />
           </div>
 
-          <button type="button" class="btn btn-info btn-sm">Buscar</button>
+          <button
+            type="button"
+            class="btn btn-info btn-sm"
+            (click)="sendBills()"
+          >
+            Buscar
+          </button>
         </div>
       </div>
     </div>
