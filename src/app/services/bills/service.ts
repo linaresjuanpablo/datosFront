@@ -2,14 +2,12 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Bills, BillsInfo } from './interface';
+import { apiURL } from 'src/app/components/constants/constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BillsService {
-  private readonly apiURL =
-    'https://datosabiertosfinal-erebanfagmc8cshc.canadacentral-01.azurewebsites.net';
-
   private readonly httpClient: HttpClient = inject(HttpClient);
 
   private data: Bills = {
@@ -24,7 +22,7 @@ export class BillsService {
     this.clearData();
 
     return this.httpClient
-      .get<Bills>(`${this.apiURL}/api/data/facturas/${value}`)
+      .get<Bills>(`${apiURL}/api/data/facturas/${value}`)
       .pipe(
         map((response) => {
           this.data = response;

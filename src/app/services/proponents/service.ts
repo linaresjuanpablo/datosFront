@@ -2,14 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Proponent, ProponentInfo } from './interface';
 import { map, Observable } from 'rxjs';
+import { apiURL } from 'src/app/components/constants/constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProponentsService {
-  private readonly apiURL =
-    'https://datosabiertosfinal-erebanfagmc8cshc.canadacentral-01.azurewebsites.net';
-
   private readonly httpClient: HttpClient = inject(HttpClient);
 
   private data: ProponentInfo[] = [];
@@ -20,7 +18,7 @@ export class ProponentsService {
     this.clearData();
 
     return this.httpClient
-      .get<Proponent>(`${this.apiURL}/api/data/proponentes/${value}`)
+      .get<Proponent>(`${apiURL}/api/data/proponentes/${value}`)
       .pipe(
         map((response) => {
           this.data = response.proponenteResponseDtos;

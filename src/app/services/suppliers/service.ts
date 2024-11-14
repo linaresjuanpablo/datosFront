@@ -7,14 +7,12 @@ import {
   SuppliersNit,
   SuppliersNitInfo,
 } from './interface';
+import { apiURL } from 'src/app/components/constants/constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SuppliersService {
-  private readonly apiURL =
-    'https://datosabiertosfinal-erebanfagmc8cshc.canadacentral-01.azurewebsites.net';
-
   private readonly httpClient: HttpClient = inject(HttpClient);
 
   private departmentData: SuppliersDepartamentInfo[] = [];
@@ -27,7 +25,7 @@ export class SuppliersService {
 
     return this.httpClient
       .get<SuppliersDepartament>(
-        `${this.apiURL}/api/data/proveedor/departamento/${value}`
+        `${apiURL}/api/data/proveedor/departamento/${value}`
       )
       .pipe(
         map((response) => {
@@ -41,7 +39,7 @@ export class SuppliersService {
     this.clearData();
 
     return this.httpClient
-      .get<SuppliersNit>(`${this.apiURL}/api/data/proveedor/nit/${value}`)
+      .get<SuppliersNit>(`${apiURL}/api/data/proveedor/nit/${value}`)
       .pipe(
         map((response) => {
           this.nitData = response.nitResponseDtos ?? [];
