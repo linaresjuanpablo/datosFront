@@ -1,0 +1,28 @@
+<h4>Proveedores en el Departamento del {{ suppliersService.title }}</h4>
+
+<hr />
+
+<table
+  *ngIf="suppliersService.getStoredDepartmentData().length"
+  class="table table-striped"
+>
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Municipio</th>
+      <th scope="col">Nombre</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of suppliersService.getStoredDepartmentData()">
+      <td>{{ item.codigo }}</td>
+      <td>{{ item.municipio }}</td>
+      <td>{{ item.nombre }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!suppliersService.getStoredDepartmentData().length">
+  No se encontraron datos
+</div>

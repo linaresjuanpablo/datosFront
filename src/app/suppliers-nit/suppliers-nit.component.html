@@ -1,0 +1,29 @@
+<h4>Proveedor con Nit {{ suppliersService.title }}</h4>
+
+<hr />
+
+<table *ngIf="suppliersService.getStoredNitData()" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Municipio</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Departamento</th>
+      <th scope="col">Tipo Empresa</th>
+      <th scope="col">Representante Legal</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of suppliersService.getStoredNitData()">
+      <td>{{ item.municipio }}</td>
+      <td>{{ item.nombre }}</td>
+      <td>{{ item.departamento }}</td>
+      <td>{{ item.tipo_empresa }}</td>
+      <td>{{ item.nombre_representante_legal }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!suppliersService.getStoredNitData().length">
+  No se encontraron datos
+</div>
